@@ -33,9 +33,9 @@ public class MyMapper1 extends Mapper<LongWritable, Text, Text, IntWritable>
 			{
 				context.write(new Text("PrimeSum"), new IntWritable(number)); 
 			}
-			else{
+			/*else{
 				context.write(new Text("CompositeSum"), new IntWritable(number));
-			}
+			}*/
 			
 			
 					
