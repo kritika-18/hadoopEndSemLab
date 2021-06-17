@@ -17,22 +17,25 @@ public class MyMapper1 extends Mapper<LongWritable, Text, Text, IntWritable>
 	public void map(LongWritable key, Text value, Context context)throws java.io.IOException, InterruptedException
 	{
 		String data[]=value.toString().split(",");    
-		int mul=0;
+		
 	
 		for(String num:data)
 		{
 			int number=Integer.parseInt(num);
-			for(int i=2;i<(number/2);i++){
+			boolean falg=true;
+			for(int i=2;i<=Math.sqrt(number);i++){
 				if(number%i==0){
-					mul=1;
+					flag=false;
 					break;
 				}
 			}
-			if(mul==0)
+			if(flag)
 			{
 				context.write(new Text("PrimeSum"), new IntWritable(number));   //  ODD 85  131  993 
 			}
-			
+			else{
+				context.write(new Text("CompositeSum"), new IntWritable(number));
+			}
 			
 			
 					
